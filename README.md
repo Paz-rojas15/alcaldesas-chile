@@ -6,6 +6,6 @@ Este proyecto analiza las elecciones de alcaldes en Chile entre 2004 y 2024 para
 
 ## Avances
 
-- [Entrega 1: Planteamiento teórico y construcción de conceptos](https://paz-rojas15.github.io)
+- [Entrega 1: Planteamiento teórico y construcción de conceptos](entregas/entrega-1.md)
 
 Autora: María Paz Rojas Orrego
