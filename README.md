@@ -8,4 +8,4 @@ Este proyecto analiza las elecciones de alcaldes en Chile entre 2004 y 2024 para
 
 - [Entrega 1: Planteamiento teórico y construcción de conceptos](entregas/entrega-1.md)
 
-Autora: María Paz Rojas Orrego
+
