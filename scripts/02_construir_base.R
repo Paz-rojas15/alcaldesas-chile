@@ -1,7 +1,7 @@
 # =============================================================
 # 02_construir_base.R
 # Construye la base de datos de candidaturas a alcalde/sa
-# (2004, 2008, 2012, 2016 y 2021) a partir de los archivos
+# (2004, 2008, 2012, 2016, 2021 y 2024) a partir de los archivos
 # oficiales del Servel guardados en data/raw/.
 # Resultado: data/clean/base_alcaldes.csv
 # Unidad de análisis: una candidatura (persona x comuna x elección)
@@ -206,10 +206,36 @@ base_21 <- res_2021 %>%
   select(-nombre_c, -id_cand, -pacto)
 
 # =============================================================
+# PARTE 2b: Elección 2024
+# (archivo creado por 01_descargar_datos.R desde el tablero del Servel)
+# =============================================================
+message("Paso 3b: leyendo resultados 2024...")
+base_24 <- read.csv("data/raw/resultados_alcaldes_2024.csv",
+                    encoding = "UTF-8", colClasses = "character") %>%
+  filter(!candidato %in% c("Votos Nulos", "Votos En Blanco")) %>%
+  mutate(comuna = unificar_comuna(comuna),
+         votos  = as.numeric(votos)) %>%
+  # Antártica y Cabo de Hornos comparten elección: se suman sus votos
+  group_by(comuna, id_candidato) %>%
+  summarise(candidato = toupper(first(candidato)),
+            nombres = first(nombres), paterno = first(paterno),
+            materno = first(materno),
+            sexo    = ifelse(first(sexo) == "M", "MUJER", "HOMBRE"),
+            partido = first(partido),
+            pacto   = first(pacto),
+            gano    = any(electo == "1"),
+            votos   = sum(votos),
+            .groups = "drop") %>%
+  mutate(anio = 2024,
+         fuera_pacto = pacto == "Independientes",
+         lista = paste0(anio, "_", pacto)) %>%
+  select(-id_candidato, -pacto)
+
+# =============================================================
 # PARTE 3: Unir todos los años y construir variables
 # =============================================================
 message("Paso 4 de 4: uniendo todos los años y construyendo variables...")
-base <- bind_rows(base_04_16, base_21) %>%
+base <- bind_rows(base_04_16, base_21, base_24) %>%
   mutate(partido = limpiar(partido))
 
 # Correcciones manuales: candidaturas que vienen sin sexo ni
@@ -240,12 +266,16 @@ izquierda <- c("PS", "PSCH", "PPD", "PRSD", "PCCH", "PH", "PRO", "IGUALDAD",
                "PARTIDO RADICAL DE CHILE", "PARTIDO COMUNISTA DE CHILE",
                "PARTIDO HUMANISTA", "UNION PATRIOTICA", "CONVERGENCIA SOCIAL",
                "REVOLUCION DEMOCRATICA", "PARTIDO ECOLOGISTA VERDE", "COMUNES",
-               "FEDERACION REGIONALISTA VERDE SOCIAL", "PARTIDO LIBERAL DE CHILE")
-centro    <- c("PDC", "FP", "CIUDADANOS", "PARTIDO DEMOCRATA CRISTIANO")
+               "FEDERACION REGIONALISTA VERDE SOCIAL", "PARTIDO LIBERAL DE CHILE",
+               "FRENTE AMPLIO", "PARTIDO ALIANZA VERDE POPULAR",
+               "PARTIDO ACCION HUMANISTA")
+centro    <- c("PDC", "FP", "CIUDADANOS", "PARTIDO DEMOCRATA CRISTIANO",
+               "PARTIDO DEMOCRATAS CHILE", "MOVIMIENTO AMARILLOS POR CHILE")
 derecha   <- c("UDI", "RN", "PRI", "AMPLITUD", "EVOP",
                "UNION DEMOCRATA INDEPENDIENTE", "RENOVACION NACIONAL",
                "EVOLUCION POLITICA", "PARTIDO REPUBLICANO DE CHILE",
-               "PARTIDO REGIONALISTA INDEPENDIENTE DEMOCRATA", "NUEVO TIEMPO")
+               "PARTIDO REGIONALISTA INDEPENDIENTE DEMOCRATA", "NUEVO TIEMPO",
+               "PARTIDO SOCIAL CRISTIANO")
 
 base <- base %>%
   mutate(sector_partido = case_when(
@@ -283,7 +313,7 @@ base <- base %>%
 # 3.3 Incumbencia: era alcalde/sa en ejercicio si ganó la elección
 # anterior en la misma comuna. En 2004 no se puede saber (la
 # elección anterior usaba otro sistema), por lo que queda NA
-anios <- c(2004, 2008, 2012, 2016, 2021)
+anios <- c(2004, 2008, 2012, 2016, 2021, 2024)
 ganadores <- base %>%
   filter(gano) %>%
   mutate(anio = anios[match(anio, anios) + 1]) %>%  # se "corre" a la elección siguiente
