@@ -9,60 +9,102 @@ H1: logit candidata mujer,anio2012,-0.163,0.101,0.105,-0.36,0.034,0.849,0.697,1.
 H1: logit candidata mujer,anio2016,0.154,0.101,0.127,-0.044,0.352,1.166,0.957,1.421,,7866
 H1: logit candidata mujer,anio2021,0.392,0.094,0,0.208,0.575,1.48,1.232,1.778,***,7866
 H1: logit candidata mujer,anio2024,0.528,0.091,0,0.349,0.707,1.696,1.417,2.028,***,7866
-H2a: MCO % de votos,(Intercept),36.145,0.768,0,34.639,37.651,NA,NA,NA,***,6623
-H2a: MCO % de votos,mujer,-1.658,0.502,0.001,-2.642,-0.674,NA,NA,NA,***,6623
-H2a: MCO % de votos,incumbente,21.075,0.564,0,19.971,22.18,NA,NA,NA,***,6623
-H2a: MCO % de votos,sectorCentro,7.135,0.727,0,5.71,8.56,NA,NA,NA,***,6623
-H2a: MCO % de votos,sectorDerecha,5.39,0.645,0,4.126,6.654,NA,NA,NA,***,6623
-H2a: MCO % de votos,sectorIndependiente,-0.213,0.585,0.716,-1.36,0.935,NA,NA,NA,,6623
-H2a: MCO % de votos,sectorOtro,-6.404,1.353,0,-9.055,-3.753,NA,NA,NA,***,6623
-H2a: MCO % de votos,anio2012,0.325,0.306,0.288,-0.275,0.925,NA,NA,NA,,6623
-H2a: MCO % de votos,anio2016,1.481,0.344,0,0.807,2.156,NA,NA,NA,***,6623
-H2a: MCO % de votos,anio2021,1.959,0.319,0,1.334,2.584,NA,NA,NA,***,6623
-H2a: MCO % de votos,anio2024,1.71,0.353,0,1.019,2.401,NA,NA,NA,***,6623
-H2a: MCO % de votos,n_candidatos,-3.81,0.149,0,-4.102,-3.519,NA,NA,NA,***,6623
-H2b: logit ganó,(Intercept),-0.878,0.077,0,-1.029,-0.728,0.415,0.358,0.483,***,6623
-H2b: logit ganó,mujer,-0.423,0.09,0,-0.599,-0.246,0.655,0.549,0.782,***,6623
-H2b: logit ganó,incumbente,1.96,0.084,0,1.796,2.124,7.098,6.025,8.361,***,6623
-H2b: logit ganó,sectorCentro,0.457,0.118,0,0.225,0.69,1.58,1.253,1.993,***,6623
-H2b: logit ganó,sectorDerecha,0.347,0.099,0,0.152,0.542,1.415,1.165,1.72,***,6623
-H2b: logit ganó,sectorIndependiente,-0.12,0.097,0.215,-0.31,0.07,0.887,0.733,1.072,,6623
-H2b: logit ganó,sectorOtro,-2.27,1.021,0.026,-4.271,-0.27,0.103,0.014,0.763,*,6623
-H2b: logit ganó,anio2012,-0.009,0.026,0.73,-0.06,0.042,0.991,0.942,1.043,,6623
-H2b: logit ganó,anio2016,0.105,0.028,0,0.05,0.161,1.111,1.051,1.174,***,6623
-H2b: logit ganó,anio2021,0.192,0.029,0,0.136,0.248,1.212,1.146,1.282,***,6623
-H2b: logit ganó,anio2024,0.154,0.031,0,0.093,0.215,1.166,1.098,1.24,***,6623
-H2b: logit ganó,n_candidatos,-0.186,0.009,0,-0.204,-0.168,0.83,0.816,0.845,***,6623
-H2c: logit ganó (interacción),(Intercept),-0.878,0.077,0,-1.03,-0.726,0.416,0.357,0.484,***,6623
-H2c: logit ganó (interacción),mujer,-0.424,0.105,0,-0.63,-0.218,0.654,0.533,0.804,***,6623
-H2c: logit ganó (interacción),incumbente,1.959,0.09,0,1.782,2.136,7.093,5.94,8.47,***,6623
-H2c: logit ganó (interacción),sectorCentro,0.457,0.118,0,0.225,0.689,1.58,1.253,1.993,***,6623
-H2c: logit ganó (interacción),sectorDerecha,0.347,0.1,0,0.152,0.542,1.415,1.164,1.72,***,6623
-H2c: logit ganó (interacción),sectorIndependiente,-0.12,0.097,0.215,-0.31,0.07,0.887,0.733,1.072,,6623
-H2c: logit ganó (interacción),sectorOtro,-2.27,1.021,0.026,-4.271,-0.27,0.103,0.014,0.764,*,6623
-H2c: logit ganó (interacción),anio2012,-0.009,0.026,0.729,-0.06,0.042,0.991,0.942,1.043,,6623
-H2c: logit ganó (interacción),anio2016,0.105,0.028,0,0.05,0.161,1.111,1.051,1.175,***,6623
-H2c: logit ganó (interacción),anio2021,0.192,0.029,0,0.136,0.248,1.212,1.146,1.282,***,6623
-H2c: logit ganó (interacción),anio2024,0.154,0.031,0,0.093,0.215,1.166,1.097,1.24,***,6623
-H2c: logit ganó (interacción),n_candidatos,-0.186,0.009,0,-0.204,-0.168,0.83,0.816,0.845,***,6623
-H2c: logit ganó (interacción),mujer:incumbente,0.005,0.189,0.981,-0.366,0.375,1.005,0.694,1.455,,6623
-H3a: logit reelección,(Intercept),1.686,0.263,0,1.171,2.201,5.397,3.225,9.032,***,1273
-H3a: logit reelección,mujer,-0.44,0.168,0.009,-0.769,-0.111,0.644,0.464,0.895,**,1273
-H3a: logit reelección,periodos_previos,-0.078,0.122,0.521,-0.318,0.161,0.925,0.728,1.175,,1273
-H3a: logit reelección,sectorCentro,0.161,0.18,0.372,-0.193,0.515,1.175,0.825,1.673,,1273
-H3a: logit reelección,sectorDerecha,0.124,0.154,0.422,-0.178,0.426,1.132,0.837,1.532,,1273
-H3a: logit reelección,sectorIndependiente,-0.329,0.199,0.097,-0.719,0.06,0.719,0.487,1.062,.,1273
-H3a: logit reelección,anio2012,-0.177,0.192,0.356,-0.554,0.199,0.837,0.575,1.221,,1273
-H3a: logit reelección,anio2016,0.448,0.196,0.022,0.064,0.832,1.565,1.066,2.298,*,1273
-H3a: logit reelección,anio2021,0.325,0.204,0.111,-0.075,0.726,1.384,0.928,2.066,,1273
-H3a: logit reelección,anio2024,0.481,0.195,0.013,0.099,0.863,1.618,1.105,2.369,*,1273
-H3a: logit reelección,n_candidatos,-0.306,0.045,0,-0.395,-0.218,0.736,0.674,0.804,***,1273
-H3b: logit ordenado n° reelecciones,mujer,-0.382,0.131,0.004,-0.639,-0.125,0.683,0.528,0.883,**,1725
-H3b: logit ordenado n° reelecciones,sectorCentro,0.322,0.141,0.023,0.045,0.599,1.38,1.046,1.821,*,1725
-H3b: logit ordenado n° reelecciones,sectorDerecha,-0.154,0.109,0.159,-0.368,0.06,0.857,0.692,1.062,,1725
-H3b: logit ordenado n° reelecciones,sectorIndependiente,-1.272,0.162,0,-1.589,-0.955,0.28,0.204,0.385,***,1725
-H3b: logit ordenado n° reelecciones,sectorOtro,-17.309,0,0,-17.309,-17.309,0,0,0,***,1725
-H3b: logit ordenado n° reelecciones,anio2012,0.416,0.13,0.001,0.161,0.671,1.515,1.174,1.956,**,1725
-H3b: logit ordenado n° reelecciones,anio2016,0.674,0.146,0,0.388,0.961,1.963,1.474,2.613,***,1725
-H3b: logit ordenado n° reelecciones,anio2021,0.181,0.138,0.191,-0.09,0.452,1.198,0.914,1.572,,1725
-H3b: logit ordenado n° reelecciones,anio2024,0.353,0.131,0.007,0.097,0.609,1.423,1.101,1.838,**,1725
+H2a: MCO % de votos,(Intercept),39.809,1.82,0,36.241,43.377,NA,NA,NA,***,6623
+H2a: MCO % de votos,mujer,-1.686,0.5,0.001,-2.665,-0.707,NA,NA,NA,***,6623
+H2a: MCO % de votos,incumbente,21.06,0.564,0,19.955,22.166,NA,NA,NA,***,6623
+H2a: MCO % de votos,sectorCentro,7.09,0.729,0,5.662,8.518,NA,NA,NA,***,6623
+H2a: MCO % de votos,sectorDerecha,5.343,0.645,0,4.078,6.608,NA,NA,NA,***,6623
+H2a: MCO % de votos,sectorIndependiente,-0.343,0.592,0.562,-1.504,0.817,NA,NA,NA,,6623
+H2a: MCO % de votos,sectorOtro,-6.427,1.353,0,-9.078,-3.776,NA,NA,NA,***,6623
+H2a: MCO % de votos,anio2012,0.354,0.306,0.248,-0.246,0.954,NA,NA,NA,,6623
+H2a: MCO % de votos,anio2016,1.513,0.342,0,0.841,2.184,NA,NA,NA,***,6623
+H2a: MCO % de votos,anio2021,1.957,0.318,0,1.335,2.58,NA,NA,NA,***,6623
+H2a: MCO % de votos,anio2024,1.674,0.352,0,0.984,2.363,NA,NA,NA,***,6623
+H2a: MCO % de votos,n_candidatos,-3.739,0.149,0,-4.031,-3.447,NA,NA,NA,***,6623
+H2a: MCO % de votos,log_poblacion,-0.286,0.101,0.005,-0.484,-0.089,NA,NA,NA,**,6623
+H2a: MCO % de votos,escolaridad,-0.056,0.129,0.662,-0.309,0.197,NA,NA,NA,,6623
+H2a: MCO % de votos,pobreza,-0.031,0.02,0.119,-0.07,0.008,NA,NA,NA,,6623
+H2b: logit ganó,(Intercept),-0.686,0.152,0,-0.983,-0.389,0.504,0.374,0.678,***,6623
+H2b: logit ganó,mujer,-0.429,0.09,0,-0.606,-0.252,0.651,0.546,0.777,***,6623
+H2b: logit ganó,incumbente,1.96,0.084,0,1.796,2.124,7.101,6.026,8.367,***,6623
+H2b: logit ganó,sectorCentro,0.456,0.119,0,0.224,0.689,1.578,1.251,1.991,***,6623
+H2b: logit ganó,sectorDerecha,0.345,0.1,0.001,0.15,0.54,1.412,1.162,1.717,***,6623
+H2b: logit ganó,sectorIndependiente,-0.126,0.098,0.202,-0.319,0.067,0.882,0.727,1.07,,6623
+H2b: logit ganó,sectorOtro,-2.274,1.021,0.026,-4.275,-0.274,0.103,0.014,0.76,*,6623
+H2b: logit ganó,anio2012,-0.008,0.026,0.755,-0.06,0.043,0.992,0.942,1.044,,6623
+H2b: logit ganó,anio2016,0.106,0.028,0,0.05,0.161,1.111,1.051,1.175,***,6623
+H2b: logit ganó,anio2021,0.191,0.028,0,0.136,0.247,1.211,1.145,1.28,***,6623
+H2b: logit ganó,anio2024,0.152,0.031,0,0.091,0.212,1.164,1.095,1.236,***,6623
+H2b: logit ganó,n_candidatos,-0.182,0.009,0,-0.201,-0.164,0.834,0.818,0.849,***,6623
+H2b: logit ganó,log_poblacion,-0.023,0.007,0.002,-0.037,-0.009,0.977,0.963,0.991,**,6623
+H2b: logit ganó,escolaridad,0.006,0.01,0.56,-0.014,0.026,1.006,0.986,1.027,,6623
+H2b: logit ganó,pobreza,-0.003,0.002,0.04,-0.006,-0,0.997,0.994,1,*,6623
+H2c: logit ganó (interacción),(Intercept),-0.686,0.151,0,-0.982,-0.389,0.504,0.374,0.678,***,6623
+H2c: logit ganó (interacción),mujer,-0.429,0.105,0,-0.635,-0.223,0.651,0.53,0.8,***,6623
+H2c: logit ganó (interacción),incumbente,1.96,0.091,0,1.782,2.138,7.099,5.943,8.481,***,6623
+H2c: logit ganó (interacción),sectorCentro,0.456,0.119,0,0.224,0.689,1.578,1.251,1.991,***,6623
+H2c: logit ganó (interacción),sectorDerecha,0.345,0.1,0.001,0.15,0.541,1.412,1.162,1.717,***,6623
+H2c: logit ganó (interacción),sectorIndependiente,-0.126,0.099,0.202,-0.319,0.068,0.882,0.727,1.07,,6623
+H2c: logit ganó (interacción),sectorOtro,-2.274,1.021,0.026,-4.275,-0.274,0.103,0.014,0.761,*,6623
+H2c: logit ganó (interacción),anio2012,-0.008,0.026,0.754,-0.059,0.043,0.992,0.942,1.044,,6623
+H2c: logit ganó (interacción),anio2016,0.106,0.028,0,0.05,0.161,1.111,1.051,1.175,***,6623
+H2c: logit ganó (interacción),anio2021,0.191,0.029,0,0.135,0.247,1.211,1.145,1.281,***,6623
+H2c: logit ganó (interacción),anio2024,0.152,0.031,0,0.091,0.212,1.164,1.095,1.236,***,6623
+H2c: logit ganó (interacción),n_candidatos,-0.182,0.009,0,-0.2,-0.164,0.834,0.818,0.849,***,6623
+H2c: logit ganó (interacción),log_poblacion,-0.023,0.007,0.002,-0.037,-0.009,0.977,0.963,0.991,**,6623
+H2c: logit ganó (interacción),escolaridad,0.006,0.01,0.564,-0.015,0.027,1.006,0.986,1.027,,6623
+H2c: logit ganó (interacción),pobreza,-0.003,0.002,0.045,-0.006,-0,0.997,0.994,1,*,6623
+H2c: logit ganó (interacción),mujer:incumbente,0.001,0.19,0.994,-0.37,0.373,1.001,0.691,1.452,,6623
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",(Intercept),-0.336,0.374,0.369,-1.068,0.396,0.715,0.344,1.486,,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",mujer,-0.588,0.123,0,-0.83,-0.347,0.555,0.436,0.707,***,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",alcaldesa_previa,-0.097,0.075,0.196,-0.245,0.05,0.907,0.783,1.051,,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",sectorCentro,0.646,0.143,0,0.366,0.925,1.908,1.442,2.523,***,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",sectorDerecha,0.443,0.107,0,0.234,0.653,1.558,1.264,1.921,***,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",sectorIndependiente,-0.075,0.111,0.499,-0.293,0.143,0.928,0.746,1.153,,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",sectorOtro,-2.178,1.025,0.034,-4.186,-0.17,0.113,0.015,0.844,*,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",anio2012,0.095,0.094,0.312,-0.089,0.28,1.1,0.914,1.323,,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",anio2016,-0.015,0.087,0.862,-0.185,0.155,0.985,0.831,1.168,,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",anio2021,0.145,0.077,0.061,-0.007,0.297,1.156,0.993,1.345,.,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",anio2024,0.003,0.085,0.971,-0.163,0.169,1.003,0.849,1.185,,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",n_candidatos,-0.125,0.017,0,-0.158,-0.092,0.883,0.854,0.912,***,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",log_poblacion,-0.08,0.02,0,-0.118,-0.041,0.923,0.888,0.96,***,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",escolaridad,-0.002,0.031,0.96,-0.062,0.059,0.998,0.94,1.06,,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",pobreza,0.001,0.004,0.816,-0.008,0.01,1.001,0.992,1.01,,5350
+"H2d: logit ganó, no incumbentes (interacción alcaldesa previa)",mujer:alcaldesa_previa,0.581,0.216,0.007,0.157,1.004,1.787,1.17,2.73,**,5350
+H3a: logit reelección,(Intercept),0.318,0.978,0.745,-1.598,2.235,1.375,0.202,9.344,,1273
+H3a: logit reelección,mujer,-0.529,0.165,0.001,-0.853,-0.205,0.589,0.426,0.815,**,1273
+H3a: logit reelección,periodos_previos,-0.089,0.124,0.475,-0.332,0.155,0.915,0.717,1.167,,1273
+H3a: logit reelección,sectorCentro,0.158,0.182,0.387,-0.199,0.515,1.171,0.819,1.673,,1273
+H3a: logit reelección,sectorDerecha,0.113,0.157,0.47,-0.194,0.421,1.12,0.824,1.523,,1273
+H3a: logit reelección,sectorIndependiente,-0.298,0.202,0.139,-0.693,0.097,0.742,0.5,1.102,,1273
+H3a: logit reelección,anio2012,-0.193,0.197,0.326,-0.578,0.192,0.825,0.561,1.212,,1273
+H3a: logit reelección,anio2016,0.437,0.197,0.027,0.05,0.824,1.548,1.051,2.279,*,1273
+H3a: logit reelección,anio2021,0.339,0.208,0.103,-0.068,0.747,1.404,0.934,2.11,,1273
+H3a: logit reelección,anio2024,0.512,0.198,0.01,0.123,0.9,1.669,1.131,2.461,**,1273
+H3a: logit reelección,n_candidatos,-0.373,0.051,0,-0.473,-0.273,0.689,0.623,0.761,***,1273
+H3a: logit reelección,log_poblacion,0.143,0.051,0.005,0.043,0.242,1.153,1.044,1.274,**,1273
+H3a: logit reelección,escolaridad,0.039,0.086,0.65,-0.129,0.206,1.04,0.879,1.229,,1273
+H3a: logit reelección,pobreza,-0.016,0.011,0.174,-0.038,0.007,0.985,0.963,1.007,,1273
+H3b: logit ordenado n° reelecciones,mujer,-0.394,0.13,0.003,-0.65,-0.139,0.674,0.522,0.87,**,1724
+H3b: logit ordenado n° reelecciones,sectorCentro,0.323,0.142,0.023,0.045,0.601,1.382,1.046,1.825,*,1724
+H3b: logit ordenado n° reelecciones,sectorDerecha,-0.157,0.109,0.152,-0.371,0.058,0.855,0.69,1.059,,1724
+H3b: logit ordenado n° reelecciones,sectorIndependiente,-1.273,0.162,0,-1.591,-0.955,0.28,0.204,0.385,***,1724
+H3b: logit ordenado n° reelecciones,anio2012,0.416,0.13,0.001,0.161,0.672,1.516,1.175,1.957,**,1724
+H3b: logit ordenado n° reelecciones,anio2016,0.676,0.146,0,0.389,0.962,1.966,1.476,2.618,***,1724
+H3b: logit ordenado n° reelecciones,anio2021,0.181,0.138,0.191,-0.09,0.452,1.198,0.914,1.571,,1724
+H3b: logit ordenado n° reelecciones,anio2024,0.352,0.131,0.007,0.096,0.608,1.422,1.101,1.837,**,1724
+H3b: logit ordenado n° reelecciones,log_poblacion,-0.016,0.036,0.648,-0.086,0.053,0.984,0.918,1.055,,1724
+H3b: logit ordenado n° reelecciones,escolaridad,0.017,0.056,0.765,-0.092,0.126,1.017,0.912,1.134,,1724
+H3b: logit ordenado n° reelecciones,pobreza,-0.003,0.009,0.774,-0.021,0.015,0.997,0.98,1.016,,1724
+Comunal: logit alcaldesa electa,(Intercept),-1.581,1.283,0.218,-4.096,0.935,0.206,0.017,2.546,,1725
+Comunal: logit alcaldesa electa,n_candidatas,1.376,0.131,0,1.119,1.633,3.959,3.062,5.12,***,1725
+Comunal: logit alcaldesa electa,n_candidatos,-0.323,0.087,0,-0.494,-0.153,0.724,0.61,0.858,***,1725
+Comunal: logit alcaldesa electa,incumbente_mujer,2.202,0.295,0,1.625,2.78,9.047,5.079,16.116,***,1725
+Comunal: logit alcaldesa electa,alcaldesa_previa,0.524,0.239,0.028,0.055,0.992,1.688,1.057,2.697,*,1725
+Comunal: logit alcaldesa electa,log_poblacion,-0.089,0.066,0.175,-0.219,0.04,0.914,0.804,1.041,,1725
+Comunal: logit alcaldesa electa,escolaridad,0.018,0.111,0.87,-0.199,0.235,1.018,0.819,1.265,,1725
+Comunal: logit alcaldesa electa,pobreza,-0.033,0.02,0.097,-0.072,0.006,0.967,0.93,1.006,.,1725
+Comunal: logit alcaldesa electa,anio2012,0.029,0.317,0.927,-0.592,0.65,1.029,0.553,1.915,,1725
+Comunal: logit alcaldesa electa,anio2016,-0.283,0.276,0.305,-0.825,0.258,0.753,0.438,1.294,,1725
+Comunal: logit alcaldesa electa,anio2021,0.339,0.3,0.258,-0.249,0.928,1.404,0.779,2.53,,1725
+Comunal: logit alcaldesa electa,anio2024,-0.4,0.305,0.19,-0.998,0.199,0.67,0.369,1.22,,1725
