@@ -18,6 +18,27 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
 library(dplyr)
 library(readr)
 library(knitr)
+library(flextable)
+
+# Formato común de las tablas: estilo académico (líneas horizontales),
+# Arial 12 y letra negra, con bordes explícitos para que se vean
+# igual en Word y en Google Docs
+tabla <- function(df, titulo, nota = NULL) {
+  ft <- flextable(df) %>%
+    theme_booktabs() %>%
+    font(fontname = "Arial", part = "all") %>%
+    fontsize(size = 12, part = "all") %>%
+    color(color = "black", part = "all") %>%
+    bold(part = "header") %>%
+    set_caption(titulo) %>%
+    set_table_properties(layout = "autofit", width = 1)
+  if (!is.null(nota)) {
+    ft <- add_footer_lines(ft, nota) %>%
+      font(fontname = "Arial", part = "footer") %>%
+      fontsize(size = 10, part = "footer")
+  }
+  ft
+}
 
 base   <- read_csv("data/clean/base_alcaldes.csv", show_col_types = FALSE)
 t1     <- read_csv("output/tabla1_candidaturas_alcaldias.csv", show_col_types = FALSE)
@@ -53,18 +74,37 @@ Esta pregunta es relevante por dos razones. En términos teóricos, permite pone
 
 # Planteamiento teórico
 
-<!-- Pegar aquí el planteamiento teórico de la Entrega 1 SIN la sección
-"¿Qué pasa cuando gobiernan mujeres?" (la profesora la tachó) y ajustando
-lo que haya marcado. Secciones que se mantienen:
-- ¿Por qué importa que haya mujeres en el poder? (Pitkin, Phillips, Campbell y Wolbrecht)
-- Oferta y demanda: dos explicaciones para la falta de mujeres
-- La incumbencia: cuando los cargos casi nunca quedan libres
-- El caso chileno (sin "y el aporte de este proyecto" en el título)
-Sugerencia: en el párrafo sobre Beaman et al. (2009), destacar que el
-sesgo de los votantes disminuye después de haber tenido una mujer en el
-cargo, porque se pone a prueba en el modelo H2d. -->
+<!-- Texto de la Entrega 1, sin la sección que tachó la profesora. -->
 
-[PEGAR Y AJUSTAR EL TEXTO DE LA ENTREGA 1]
+## ¿Por qué importa que haya mujeres en el poder?
+
+Para entender el problema, primero hay que definir qué significa que un grupo esté "representado". Pitkin (1967) propone una distinción que sigue siendo muy usada: la representación **descriptiva**, que se refiere a que quienes ocupan cargos se parezcan a la población que representan (por ejemplo, en su sexo), y la representación **sustantiva**, que se refiere a que defiendan los intereses de ese grupo. En este proyecto me enfoco en la representación descriptiva, es decir, en cuántas mujeres llegan a ser alcaldesas.
+
+Esto no es solo una cuestión de números. Phillips (1995) sostiene que la presencia de mujeres en cargos de poder importa por sí misma, porque una democracia donde la mitad de la población casi no ocupa cargos de decisión está incompleta. Además, las mujeres que llegan al poder sirven como modelos a seguir: cuando las personas ven a mujeres en política, especialmente las más jóvenes, aumenta su interés por participar (Campbell y Wolbrecht, 2006).
+
+## Oferta y demanda: dos explicaciones para la falta de mujeres
+
+La literatura ofrece dos grandes explicaciones para entender por qué hay menos mujeres en cargos de elección popular. Norris y Lovenduski (1995) las resumen como un problema de **oferta** y de **demanda**.
+
+Por el lado de la oferta, la explicación es que hay menos mujeres dispuestas a ser candidatas. Lawless y Fox (2010) muestran que, incluso entre personas con perfiles parecidos, las mujeres se sienten menos calificadas para competir y reciben menos invitaciones a hacerlo. A esto se suman los roles de género tradicionales y las tareas de cuidado, que les dejan menos tiempo para hacer carrera política.
+
+Por el lado de la demanda, la explicación es que, aunque las mujeres quieran competir, el sistema no las favorece. Esto puede pasar porque los partidos prefieren nominar a hombres, o porque los votantes tienen estereotipos de género que perjudican a las candidatas, por ejemplo, la idea de que los hombres son más fuertes o mejores para liderar (Huddy y Terkildsen, 1993). En esta línea, Beaman et al. (2009) mostraron en India que los votantes evaluaban peor a las líderes mujeres, aunque ese prejuicio disminuía después de haber tenido una mujer en el cargo.
+
+Sin embargo, otros estudios ponen en duda que los votantes castiguen a las mujeres. Brooks (2013) y Dolan (2014) encuentran que, cuando las mujeres compiten, ganan en proporciones parecidas a los hombres, y que los estereotipos de género pesan menos de lo que se pensaba. Si esto es así, el principal obstáculo no estaría en las urnas, sino antes: en que pocas mujeres llegan a ser candidatas. Esta discusión sigue abierta, y es justamente la que este proyecto busca poner a prueba en el caso chileno.
+
+## La incumbencia: cuando los cargos casi nunca quedan libres
+
+Existe una tercera explicación que se ubica entre las dos anteriores. Puede que las mujeres no pierdan por ser mujeres, sino porque suelen competir contra hombres que ya ocupan el cargo y buscan la reelección. Quienes están en el cargo tienen una gran ventaja: son más conocidos, tienen recursos y ya han ganado antes. Schwindt-Bayer (2005) sostiene que esta ventaja frena la llegada de mujeres, porque los cargos casi nunca quedan disponibles. Así, aunque los votantes no discriminen, la representación de las mujeres avanza muy lento.
+
+Esta explicación es especialmente importante para Chile, donde durante años muchos alcaldes se reeligieron una y otra vez. En 2020 se aprobó un límite a la reelección de alcaldes, lo que podría haber abierto más cupos en las últimas elecciones y, con ello, más oportunidades para las mujeres. Por esta razón, la incumbencia se considerará en el análisis para comparar a hombres y mujeres en igualdad de condiciones.
+
+## El caso chileno
+
+En América Latina, la llegada de mujeres a la presidencia, como Michelle Bachelet en Chile, generó grandes expectativas sobre el aumento de la participación política de las mujeres (Franceschet et al., 2016; Reyes-Housholder y Thomas, 2018). Sin embargo, la mayoría de los estudios se ha concentrado en la presidencia, en el Congreso y en el efecto de las leyes de cuotas.
+
+Las alcaldías chilenas son un caso interesante y menos estudiado por dos razones. Primero, desde 2004 los alcaldes se eligen de forma directa, lo que permite analizar veinte años de elecciones con las mismas reglas básicas. Segundo, como las elecciones municipales no tienen cuotas de género, muestran cómo cambia la representación de las mujeres sin reglas que la impulsen.
+
+El aporte de este proyecto es analizar las elecciones de alcaldes entre 2004 y 2024 para distinguir si la baja presencia de alcaldesas se explica porque se presentan pocas mujeres, porque la ciudadanía vota menos por ellas, o porque les cuesta más mantenerse en el cargo una vez que llegan.
 
 # Hipótesis
 
@@ -107,24 +147,23 @@ vars <- tibble::tribble(
   "Control comunal", "Pobreza", "% de personas en pobreza por ingresos (2017)",
   "Control comunal", "Alcaldesa previa", "1 = la comuna tuvo alcaldesa en una elección anterior"
 )
-kable(vars, caption = "Tabla 1. Conceptos, variables y medición")
+tabla(vars, "Tabla 1. Conceptos, variables y medición")
 ```
 
 ```{r tabla-descriptivos}
-kable(t5, caption = "Tabla 2. Estadísticos descriptivos", format.args = list(decimal.mark = ","))
+tabla(t5 %>% mutate(across(where(is.numeric), ~ num(.x, 2))) %>% mutate(N = format(t5$N, big.mark = ".", decimal.mark = ",")), "Tabla 2. Estadísticos descriptivos")
 ```
 
 ```{r tabla-anual}
-kable(t1, caption = "Tabla 3. Candidaturas y alcaldías por elección", format.args = list(decimal.mark = ","))
+tabla(t1 %>% mutate(across(starts_with("%"), ~ num(.x, 1))) %>% mutate(Año = as.character(Año)), "Tabla 3. Candidaturas y alcaldías por elección")
 ```
 
 ```{r grafico1, fig.cap="Gráfico 1. Mujeres entre candidaturas y alcaldías, 2004-2024"}
 include_graphics("output/grafico1_mujeres_candidaturas_alcaldias.png")
 ```
 
-> **Nota para escribir (borrar antes de entregar):** las candidatas pasaron de `r num(t1$"% candidatas"[1], 1)`% en 2004 a `r num(t1$"% candidatas"[6], 1)`% en 2024; las alcaldesas, de `r num(t1$"% alcaldesas"[1], 1)`% a `r num(t1$"% alcaldesas"[6], 1)`%. En todas las elecciones el % de alcaldesas es menor que el % de candidatas.
 
-[ESCRIBIR: descripción del Gráfico 1]
+En veinte años de elecciones, la proporción de candidatas aumentó solo 8,1 puntos porcentuales, pasando de 16,7% en 2004 a 24,8% en 2024. Este aumento se tradujo en un alza aún menor de alcaldesas electas: de 12,2% en 2004 a 16,5% en 2024, es decir, 4,3 puntos porcentuales. En 2024, aproximadamente una de cada cuatro candidaturas fue de una mujer, y solo una de cada seis alcaldías quedó en manos de una mujer. Además, en todas las elecciones el porcentaje de alcaldesas es menor que el de candidatas, lo que sugiere que la baja presencia de mujeres no se explica solo porque compitan menos.
 
 ```{r grafico2, fig.cap="Gráfico 2. Candidaturas de mujeres según sector político"}
 include_graphics("output/grafico2_candidatas_por_sector.png")
@@ -138,7 +177,7 @@ include_graphics("output/grafico3_exito_sexo_incumbencia.png")
 include_graphics("output/grafico5_reeleccion_sexo.png")
 ```
 
-[ESCRIBIR: descripción de los Gráficos 2 a 4 y su relación con H1, H2 y H3]
+El porcentaje de candidatas es similar entre sectores políticos: 21% en la derecha, 20% en la izquierda y 17% en el centro, por lo que no hay grandes diferencias entre partidos. Sin embargo, las mujeres ganan con menos frecuencia: entre quienes no eran alcaldes en ejercicio, ganó el 18% de los hombres y solo el 12,5% de las mujeres. Además, los hombres suelen ser más reelegidos que las mujeres: entre quienes buscaron la reelección, lo logró el 66% de los alcaldes y el 57% de las alcaldesas.
 
 # 3. Construcción y estimación de los modelos
 
@@ -177,21 +216,23 @@ tabla_modelos <- function(nombres, titulos) {
   fila_n <- as.list(c("N", n_obs$n[match(nombres, n_obs$modelo)]))
   names(fila_n) <- c("variable", nombres)
   ancho <- bind_rows(ancho[, c("variable", nombres)], as_tibble(fila_n))
-  names(ancho) <- c("", titulos)
+  names(ancho) <- c("Variable", titulos)
   ancho
 }
-kable(tabla_modelos(
+tabla(tabla_modelos(
   c("H1: logit candidata mujer", "H2a: MCO % de votos", "H2b: logit ganó",
     "H2d: logit ganó, no incumbentes (interacción alcaldesa previa)"),
   c("H1: Mujer (logit)", "H2a: % votos (MCO)", "H2b: Ganó (logit)", "H2d: Ganó, no incumbentes (logit)")),
-  caption = "Tabla 4. Modelos de oferta y demanda. Coeficientes y errores estándar agrupados por comuna entre paréntesis. Todos los modelos incluyen efectos fijos de año. *** p<0,001; ** p<0,01; * p<0,05; . p<0,1")
+  "Tabla 4. Modelos de oferta y demanda",
+  nota = "Coeficientes y errores estándar agrupados por comuna entre paréntesis. Todos los modelos incluyen efectos fijos de año. *** p<0,001; ** p<0,01; * p<0,05; . p<0,1")
 ```
 
 ```{r tabla-modelos-2}
-kable(tabla_modelos(
+tabla(tabla_modelos(
   c("H3a: logit reelección", "H3b: logit ordenado n° reelecciones", "Comunal: logit alcaldesa electa"),
   c("H3a: Reelecto/a (logit)", "H3b: N° reelecciones (logit ordenado)", "Comunal: Alcaldesa electa (logit)")),
-  caption = "Tabla 5. Modelos de reelección y modelo comunal. Coeficientes y errores estándar agrupados por comuna entre paréntesis. Todos los modelos incluyen efectos fijos de año. *** p<0,001; ** p<0,01; * p<0,05; . p<0,1")
+  "Tabla 5. Modelos de reelección y modelo comunal",
+  nota = "Coeficientes y errores estándar agrupados por comuna entre paréntesis. Todos los modelos incluyen efectos fijos de año. El modelo H3b excluye el sector «Otro», que tiene solo una persona electa. *** p<0,001; ** p<0,01; * p<0,05; . p<0,1")
 ```
 
 # 4. Presentación e interpretación de los resultados
@@ -211,25 +252,15 @@ ggplot(p_h2d, aes(Comuna, estimate, color = Sexo)) +
   theme_minimal(base_size = 11) + theme(legend.position = "bottom")
 ```
 
-> **Datos clave para escribir esta sección (borrar antes de entregar; se actualizan solos si cambian los modelos):**
->
-> H1: la razón de odds de 2024 respecto de 2004 es `r num(coef_de("H1:", "anio2024", "odds_ratio"))`; las candidaturas fuera de pacto tienen una razón de odds de `r num(coef_de("H1:", "sectorIndependiente", "odds_ratio"))` (p = `r num(coef_de("H1:", "sectorIndependiente", "valor_p"), 3)`). Derecha y centro no difieren significativamente de la izquierda.
->
-> H2a: las mujeres obtienen `r num(abs(coef_de("H2a:", "mujer")))` puntos porcentuales menos de votos (p = `r num(coef_de("H2a:", "mujer", "valor_p"), 3)`). H2b: razón de odds de ser mujer = `r num(coef_de("H2b:", "mujer", "odds_ratio"))`; efecto marginal promedio = `r pct(ame$estimate[1])` puntos porcentuales [IC 95%: `r pct(ame$conf.low[1])`; `r pct(ame$conf.high[1])`]. Probabilidad predicha de ganar (no incumbentes): hombre `r pct(p_h2$estimate[p_h2$Sexo=="Hombre" & p_h2$Condición=="No incumbente"])`%, mujer `r pct(p_h2$estimate[p_h2$Sexo=="Mujer" & p_h2$Condición=="No incumbente"])`%. Incumbentes: hombre `r pct(p_h2$estimate[p_h2$Sexo=="Hombre" & p_h2$Condición=="Incumbente"])`%, mujer `r pct(p_h2$estimate[p_h2$Sexo=="Mujer" & p_h2$Condición=="Incumbente"])`%. La interacción mujer × incumbente no es significativa (p = `r num(coef_de("H2c:", "mujer:incumbente", "valor_p"), 3)`).
->
-> H2d: en comunas que nunca tuvieron alcaldesa: hombre `r pct(p_h2d$estimate[1])`%, mujer `r pct(p_h2d$estimate[2])`%. En comunas que ya tuvieron: hombre `r pct(p_h2d$estimate[3])`%, mujer `r pct(p_h2d$estimate[4])`%. Interacción: razón de odds `r num(coef_de("H2d:", "mujer:alcaldesa_previa", "odds_ratio"))`, p = `r num(coef_de("H2d:", "mujer:alcaldesa_previa", "valor_p"), 3)`.
->
-> H3a: efecto marginal de ser mujer sobre la probabilidad de reelección = `r pct(ame$estimate[2])` puntos porcentuales [IC 95%: `r pct(ame$conf.low[2])`; `r pct(ame$conf.high[2])`]. H3b: probabilidad predicha de estar en un primer período: hombres `r pct(p_h3b$estimate[1])`%, mujeres `r pct(p_h3b$estimate[2])`%.
->
-> Comunal: cada candidata adicional multiplica las odds de elegir alcaldesa por `r num(coef_de("Comunal:", "n_candidatas", "odds_ratio"))`; haber tenido alcaldesa antes, por `r num(coef_de("Comunal:", "alcaldesa_previa", "odds_ratio"))`.
->
-> Recordar: interpretar dirección, magnitud e incertidumbre, y relacionar cada resultado con la hipótesis y la literatura (Norris y Lovenduski; Lawless y Fox; Brooks; Dolan; Beaman et al.; Schwindt-Bayer). Posible advertencia: la menor votación de las mujeres podría reflejar que los partidos las nominan en comunas más difíciles, y no solo la preferencia de los votantes.
+Los resultados apoyan H1. En todo el período, cerca de una de cada cinco candidaturas fue de una mujer, y el modelo H1 muestra que esta baja presencia es similar en todos los sectores políticos, porque ni el centro ni la derecha se diferencian significativamente de la izquierda. La única excepción son las candidaturas independientes fuera de pacto, donde la probabilidad de que la candidatura sea de una mujer es levemente menor. Es decir, la escasez de candidatas no es un problema de un sector en particular, sino del sistema político en su conjunto.
 
-[ESCRIBIR: interpretación de los resultados de H1, H2, H3 y del modelo comunal]
+Los resultados también apoyan H2. Aun controlando por incumbencia, sector, año y características de la comuna, las candidatas obtienen 1,7 puntos porcentuales menos de votos y tienen una probabilidad significativamente menor de ganar que los hombres. Según el modelo H2c, esta brecha se mantiene tanto entre quienes no ocupan el cargo (18% frente a 12%) como entre quienes buscan la reelección (61% frente a 50%). Sin embargo, en línea con Beaman et al. (2009), la desventaja desaparece en las comunas que ya tuvieron una alcaldesa. Ahí, hombres y mujeres no incumbentes tienen una probabilidad de ganar casi idéntica, cercana al 16%. Estos resultados contrastan con Brooks (2013) y Dolan (2014), quienes no encuentran que los votantes castiguen a las candidatas.
+
+Una vez en el cargo, las alcaldesas tienen 10 puntos porcentuales menos de probabilidad de ser reelegidas que los alcaldes, y esta diferencia es estadísticamente significativa. El logit ordenado confirma este resultado: las mujeres que llegan a la alcaldía acumulan menos reelecciones consecutivas que los hombres. Por último, el modelo comunal muestra que la oferta es clave para el resultado final: cada candidata adicional en una comuna multiplica por casi cuatro las probabilidades de que gane una mujer.
 
 # Conclusiones preliminares
 
-[ESCRIBIR]
+La baja presencia de alcaldesas en Chile se explica por varios factores combinados. Se presentan pocas mujeres, las que compiten tienen menos probabilidad de ganar que los hombres en condiciones similares y, una vez en el cargo, les cuesta más ser reelegidas. La oferta parece ser el factor más determinante, ya que cada candidata adicional en una comuna aumenta fuertemente las probabilidades de que gane una mujer. Al mismo tiempo, que la brecha desaparezca en las comunas que ya tuvieron una alcaldesa sugiere que el prejuicio de los votantes puede reducirse con la experiencia. Por eso, aumentar el número de candidatas podría tener efectos que se refuerzan en el tiempo.
 
 # Referencias
 
